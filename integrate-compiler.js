@@ -75,7 +75,14 @@ function initializeCompiler(continuation){
     oReq.send();
 }
 
-initializeCompiler(function(){
+function compile(){
+    console.log("compiling...");
     output(languageService.getSemanticDiagnostics("userscript.ts"));
     output(languageService.getEmitOutput("userscript.ts"));
+}
+
+initializeCompiler(function(){
+    compile();
 });
+let btn = document.getElementById('btn-compile');
+btn.addEventListener("click", function(){ compile(); });
