@@ -10,7 +10,11 @@
     editor.session.setMode("ace/mode/typescript");
     let completer = {
         getCompletions: function(editor, session, pos, prefix, callback){
-            callback(null, [{caption:"flow",snippet:"flow", meta: "php function", score: 100}]);
+            callback(null, [
+                    {caption:"flow caption 1",snippet:"flow snippet", meta: "description score 100", score: 100},
+                    {caption:"flow caption 2",snippet:"flow snippet", meta: "description score 10", score: 10},
+                    {caption:"flow caption 3",snippet:"flow snippet", meta: "description score 1000", score: 1000}
+                ]);
         }
     };
     langtools.addCompleter(completer);
@@ -23,7 +27,7 @@
             this.errorMarkers.push(editor.session.addMarker(range, "ace_underline_error", "text", true));
         },
         clearDiagnostics: function(){
-            this.errorMarkers.forEach(function(id) {
+            this.errorMarkersIds.forEach(function(id) {
                 editor.session.removeMarker(id);
             });
         }
