@@ -24,7 +24,7 @@
         addDiagnostic: function(d) {
             let startPosition = d.file.getLineAndCharacterOfPosition(d.start);
             let range = new AceRange(startPosition.line, startPosition.character, startPosition.line, startPosition.character+d.length);
-            this.errorMarkers.push(editor.session.addMarker(range, "ace_underline_error", "text", true));
+            this.errorMarkersIds.push(editor.session.addMarker(range, "ace_underline_error", "text", true));
         },
         clearDiagnostics: function(){
             this.errorMarkersIds.forEach(function(id) {
