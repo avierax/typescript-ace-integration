@@ -7,9 +7,10 @@ function getSrc(){
 function output(o){
     console.log(o);
 }
-
+const logPrefix = "TS";
 var languageServiceHost = {
     files : {},
+
     log : function(msg) {
         return console.log(logPrefix+msg);
     },
@@ -87,6 +88,21 @@ function compile(){
     }
     output(languageService.getEmitOutput("userscript.ts"));
 }
+
+window.completionService = {
+    getCompletions: function(filename, pos){
+        let position = languageService.getSourceFile(filename).getPositionOfLineAndCharacter(pos.row, pos.column);
+        let completions = languageService.getCompletionsAtPosition(filename, position, {includeCompletionsForModuleExports: true});
+        completions.entries.map(function(c){
+            return {
+                caption: c.name,
+                snippet: c.name,
+                meta: c.kind,
+                score: 100
+            }
+        });
+    }
+};
 
 initializeCompiler(()=>compile());
 
