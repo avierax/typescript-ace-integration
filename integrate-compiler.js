@@ -77,8 +77,9 @@ function initializeCompiler(continuation){
     oReq.send();
 }
 
-function compile(){
+function saveAndCompile(){
     console.log("compiling...");
+    languageServiceHost.addFile("userscript.ts", getSrc());
     let diagnostics = languageService.getSemanticDiagnostics("userscript.ts");
     window.diagnosticsManager.clearDiagnostics();
     for(var index in diagnostics){
@@ -104,7 +105,7 @@ window.completionService = {
     }
 };
 
-initializeCompiler(()=>compile());
+initializeCompiler(()=>saveAndCompile());
 
 let btn = document.getElementById('btn-compile');
-btn.addEventListener("click", ()=>compile());
+btn.addEventListener("click", ()=>saveAndCompile());
