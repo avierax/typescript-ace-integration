@@ -1,11 +1,12 @@
+
+
 function getSrc(){
-    return document.getElementById("editor").innerText;
+    return window.aceEditor.getSession().doc.getValue();
 }
 
 function output(o){
     console.log(o);
 }
-
 
 var languageServiceHost = {
     files : {},
@@ -79,14 +80,14 @@ function compile(){
     console.log("compiling...");
     let diagnostics = languageService.getSemanticDiagnostics("userscript.ts");
     for(var index in diagnostics){
-        let d = diagnostics[index];
-        console.log(d);
+        let diagnostic = diagnostics[index];
+        console.log(diagnostic)
+        window.diagnosticsManager.addDiagnostic(diagnostic);
     }
     output(languageService.getEmitOutput("userscript.ts"));
 }
 
-initializeCompiler(function(){
-    compile();
-});
+initializeCompiler(()=>compile());
+
 let btn = document.getElementById('btn-compile');
-btn.addEventListener("click", function(){ compile(); });
+btn.addEventListener("click", ()=>compile());
