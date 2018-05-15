@@ -77,7 +77,11 @@ function initializeCompiler(continuation){
 
 function compile(){
     console.log("compiling...");
-    output(languageService.getSemanticDiagnostics("userscript.ts"));
+    let diagnostics = languageService.getSemanticDiagnostics("userscript.ts");
+    for(var index in diagnostics){
+        let d = diagnostics[index];
+        console.log(d);
+    }
     output(languageService.getEmitOutput("userscript.ts"));
 }
 
