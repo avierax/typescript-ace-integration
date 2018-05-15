@@ -79,9 +79,10 @@ function initializeCompiler(continuation){
 function compile(){
     console.log("compiling...");
     let diagnostics = languageService.getSemanticDiagnostics("userscript.ts");
+    window.diagnosticsManager.clearDiagnostics();
     for(var index in diagnostics){
         let diagnostic = diagnostics[index];
-        console.log(diagnostic)
+        console.log(diagnostic);
         window.diagnosticsManager.addDiagnostic(diagnostic);
     }
     output(languageService.getEmitOutput("userscript.ts"));
