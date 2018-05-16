@@ -10,17 +10,17 @@
     <button id="btn-compile">compile</button>
 </div>
 <div id="editor" style="width: 100%; height: 500px">
-    class Person {
-    name: string;
-    age: number;
+    class Human {
+        name: string;
+        age: number;
 
     }
 
     class Building {
-    address: string;
+        address: string;
     }
 
-    var a = new Person();
+    var a = new Human();
     a.name = 1; // error
     a.age = "20"; // error
     a.gender = 'f'; // error
@@ -39,6 +39,7 @@
 <script type="text/javascript" src="lib/typescriptServices.js"></script>
 <script type="text/javascript" src="basic-editor.js"></script>
 <script type="text/javascript" src="integrate-compiler.js"></script>
+<script type="text/javascript" src="load-user-library.js"></script>
 
 </body>
 </html>

@@ -117,6 +117,8 @@ window.completionService = {
     }
 };
 
+window.languageServiceHost = languageServiceHost;
+
 initializeCompiler(()=>saveAndCompile());
 
 let btn = document.getElementById('btn-compile');
