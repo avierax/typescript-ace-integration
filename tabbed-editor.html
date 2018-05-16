@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <title>Tabbed Editor</title>
     <link rel="stylesheet" href="css/tabs.css" />
+    <link id="userscriptlink" rel="import" href="user/userscript.ts" />
+    <link id="baselibrarylink" rel="import" href="user/baselibrary.d.ts" />
+
 </head>
 <body>
 
 <div class="tab">
     <button class="tablinks" onclick="showTab(event, 'editor(userlibrary.d.ts)')">userlibrary.d.ts</button>
-    <button class="tablinks" onclick="showTab(event, 'editor(userscript.ts)')">userscript.ts</button>
+    <button class="tablinks" onclick="showTab(event, 'editor')">userscript.ts</button>
 </div>
 
 <div id="editor(userlibrary.d.ts)" style="width: 100%; height: 500px" class="tabcontent">
     userlibrary
 </div>
 
-<div id="editor(userscript.ts)" style="width: 100%; height: 500px" class="tabcontent">
+<div id="editor" style="width: 100%; height: 500px" class="tabcontent">
     userscript
 </div>
 
@@ -24,13 +27,13 @@
 
 </div>
 
+<script type="text/javascript" src="tabs.js"></script>
 <script src="src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="src-min-noconflict/ext-language_tools.js" charset="utf-8" ></script>
 <script type="text/javascript" src="lib/typescriptServices.js"></script>
+<script type="text/javascript" src="basic-editor.js"></script>
 <script type="text/javascript" src="integrate-compiler.js"></script>
 <script type="text/javascript" src="load-user-library.js"></script>
-<script type="text/javascript" src="tabs.js"></script>
-<script type="text/javascript" src="basic-editor.js"></script>
 
 
 </body>
