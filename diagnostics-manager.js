@@ -1,5 +1,6 @@
 (function () {
     var AceRange = ace.require("ace/range").Range;
+    const consoleElement = document.getElementById("console");
     window.diagnosticsManager = {
         errorMarkersIds: [],
         addDiagnostic: function (d) {
@@ -12,6 +13,7 @@
             this.errorMarkersIds.forEach(function (id) {
                 window.aceEditor.session.removeMarker(id);
             });
+            consoleElement.innerHTML = "";
         }
     };
 })();
