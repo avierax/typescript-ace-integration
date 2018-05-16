@@ -37,6 +37,10 @@ var languageServiceHost = {
     },
     getScriptSnapshot : function(filename) {
         console.info("getting snapshot for "+filename);
+        if(this.files[filename]===undefined) {
+            console.info("no snapshot present for file "+filename);
+            return undefined;
+        }
         return this.files[filename].file;
     },
     getScriptFileNames : function() {
@@ -66,7 +70,7 @@ function initializeCompiler(continuation){
     var oReq = new XMLHttpRequest();
     oReq.onload = function(e) {
         var response = oReq.responseText; // not responseText
-        languageServiceHost.addFile("lib.d.ts", response);
+        languageServiceHost.addFile("lib/lib.d.ts", response);
         console.log("base library loaded");
 
         languageServiceHost.addFile("userscript.ts", getSrc());
