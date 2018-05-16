@@ -66,4 +66,6 @@ const userLibraryCode = "class Customer{\n" +
 
 //endregion
 
+window.aceEditor.session.setValue(document.querySelector("#userscriptlink").import.body.innerText);
+
 window.languageServiceHost.addFile("baselibrary.d.ts", userLibraryCode);
