@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Tabbed Editor</title>
     <link rel="stylesheet" href="css/tabs.css" />
+    <link rel="stylesheet" href="css/ace-marker.css" />
     <link id="userscriptlink" rel="import" href="user/userscript.ts" />
     <link id="baselibrarylink" rel="import" href="user/baselibrary.d.ts" />
 
 </head>
 <body>
-
+<div id="toolbar" style="width: 100%; height: 30px">
+    <button id="btn-compile">compile</button>
+</div>
 <div class="tab">
-    <button class="tablinks" onclick="showTab(event, 'editor(userlibrary.d.ts)')">userlibrary.d.ts (readonly)</button>
-    <button class="tablinks" onclick="showTab(event, 'editor')">userscript.ts</button>
+    <button id="userlibrary-tablink" class="tablinks" onclick="showTab(event.currentTarget, 'editor(userlibrary.d.ts)')">userlibrary.d.ts (readonly)</button>
+    <button id="usercode-tablink" class="tablinks" onclick="showTab(event.currentTarget, 'editor')">userscript.ts</button>
 </div>
 
 <div id="editor(userlibrary.d.ts)" style="width: 100%; height: 500px" class="tabcontent">
@@ -36,6 +39,9 @@
 <script type="text/javascript" src="integrate-compiler.js"></script>
 <script type="text/javascript" src="load-user-library.js"></script>
 
+<script>
+    showTab(document.querySelector("#usercode-tablink"), 'editor');
+</script>
 
 </body>
 </html>
