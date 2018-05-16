@@ -6,6 +6,7 @@
     let completer = {
         getCompletions: function(editor, session, pos, prefix, callback){
             console.log("getting completions");
+            save();
             var completions = window.completionService.getCompletions("userscript.ts", pos)
             console.log(completions);
             callback(null, completions);

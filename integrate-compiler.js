@@ -77,9 +77,12 @@ function initializeCompiler(continuation){
     oReq.send();
 }
 
-function saveAndCompile(){
-    console.log("compiling...");
+function save(){
     languageServiceHost.addFile("userscript.ts", getSrc());
+}
+
+function compile(){
+    console.log("compiling...");
     let diagnostics = languageService.getSemanticDiagnostics("userscript.ts");
     window.diagnosticsManager.clearDiagnostics();
     for(var index in diagnostics){
@@ -88,6 +91,11 @@ function saveAndCompile(){
         window.diagnosticsManager.addDiagnostic(diagnostic);
     }
     output(languageService.getEmitOutput("userscript.ts"));
+}
+
+function saveAndCompile(){
+    save();
+    compile();
 }
 
 window.completionService = {
