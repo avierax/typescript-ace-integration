@@ -2,18 +2,21 @@
     let langtools = ace.require("ace/ext/language_tools");
     var AceRange = ace.require("ace/range").Range;
     let editor = ace.edit("editor");
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        // enableSnippets: true,
-        enableLiveAutocompletion: false
-    });
     editor.session.setMode("ace/mode/typescript");
     let completer = {
         getCompletions: function(editor, session, pos, prefix, callback){
-            callback(null, window.completionService.getCompletions("userscript.ts", pos));
+            console.log("getting completions");
+            var completions = window.completionService.getCompletions("userscript.ts", pos)
+            console.log(completions);
+            callback(null, completions);
         }
     };
-    langtools.addCompleter(completer);
+    langtools.setCompleters([completer]);
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: false
+    });
 
     window.diagnosticsManager = {
         errorMarkersIds : [],

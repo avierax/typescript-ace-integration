@@ -94,7 +94,7 @@ window.completionService = {
     getCompletions: function(filename, pos){
         let position = languageService.getSourceFile(filename).getPositionOfLineAndCharacter(pos.row, pos.column);
         let completions = languageService.getCompletionsAtPosition(filename, position, {includeCompletionsForModuleExports: true});
-        completions.entries.map(function(c){
+        return completions.entries.map(function(c){
             return {
                 caption: c.name,
                 snippet: c.name,
