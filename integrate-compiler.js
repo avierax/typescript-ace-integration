@@ -60,10 +60,10 @@ var languageServiceHost = {
 
 var languageService = ts.createLanguageService(languageServiceHost, ts.createDocumentRegistry());
 
-var oReq = new XMLHttpRequest();
 
 function initializeCompiler(continuation){
 
+    var oReq = new XMLHttpRequest();
     oReq.onload = function(e) {
         var response = oReq.responseText; // not responseText
         languageServiceHost.addFile("lib.d.ts", response);
