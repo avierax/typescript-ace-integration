@@ -8,10 +8,11 @@ class Building {
 }
 
 var a = new Human();
-a.name = 1; // error
-a.age = "20"; // error
-a.gender = 'f'; // error
-
+a.age = 20; // error
 a.name = "Raul";
 
 var b = new Building();
+
+var arrayOfHuman:Human[] = new Array<Human>(10);
+
+arrayOfHuman[10].age = 12;
